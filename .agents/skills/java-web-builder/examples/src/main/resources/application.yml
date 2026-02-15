@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: demo-spring
+  threads:
+    virtual:
+      enabled: true
+  servlet:
+    multipart:
+      max-file-size: 1MB
+      max-request-size: 10MB
+  mvc:
+    servlet:
+      load-on-startup: 1
+
+server:
+  address: 0.0.0.0
+  port: 8080
+  compression:
+    enabled: true
+    min-response-size: 2KB
+  servlet:
+    context-path: /demo/spring
+  tomcat:
+    threads:
+      max: 200
+      max-queue-capacity: 800
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] [%X{traceid:-N/A}] [%X{userid:-N/A}] %-40.40logger{39} : %msg%n"
