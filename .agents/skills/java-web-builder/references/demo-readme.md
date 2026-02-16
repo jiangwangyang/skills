@@ -1,15 +1,15 @@
 # demo-spring
 
-基于 Spring Boot 的 Web 示例项目，包含统一请求链路、统一响应、统一异常处理、可复用配置和搜索业务流程。
+基于 Spring Boot 的 Web 示例项目，包含统一请求链路、统一响应、统一异常处理、可复用配置和 Demo 业务流程。
 
 ## 快速开始
 
 - 环境：JDK 21、Maven 3.9+
 - 启动：`mvn spring-boot:run`
 - 基础路径：`http://localhost:8080/demo/spring`
-- 搜索接口：`POST /search`
+- Demo 接口：`POST /demo`
 - 调用示例：
-  `curl -X POST "http://localhost:8080/demo/spring/search" -H "Content-Type: application/json" -H "Authorization: Bearer demo-token" -d "{\"name\":\"redis-keyword\"}"`
+  `curl -X POST "http://localhost:8080/demo/spring/demo" -H "Content-Type: application/json" -H "Authorization: Bearer demo-token" -d "{\"name\":\"test\"}"`
 
 ## 目录结构
 
@@ -18,7 +18,7 @@
 - `src/main/java/com/example/demo/spring/domain`：DTO/VO/Entity
 - `src/main/java/com/example/demo/spring/controller`：接口层
 - `src/main/java/com/example/demo/spring/service`：业务服务层
-- `src/main/java/com/example/demo/spring/client`：外部访问层（Redis/MySQL/HTTP），必须进行限流和重试
+- `src/main/java/com/example/demo/spring/client`：外部访问层（MySQL/HTTP/等），必须进行限流和重试
 
 ## 通用模块
 
@@ -57,10 +57,9 @@
 
 ## 业务模块
 
-### 搜索模块
+### Demo 模块
 
-- 代码要点介绍：`SearchController` 接口入口，`SearchServiceImpl` 执行业务编排，`SearchRedisClient/SearchMysqlClient` 分层查询
-- 代码要点介绍：查询策略为“先 Redis 后 MySQL”，MySQL 未命中抛业务异常并走统一异常处理
-- 代码要点介绍：返回统一封装 `ApiResponse<SearchVo>`，便于前端稳定消费
+- 代码要点介绍：`DemoController` 接口入口，`DemoServiceImpl` 执行业务编排，`DemoMysqlClient` 数据访问层
+- 代码要点介绍：查询策略为直接查询 MySQL，未命中抛业务异常并走统一异常处理
+- 代码要点介绍：返回统一封装 `ApiResponse<DemoVo>`，便于前端稳定消费
 - ...：可按相同分层模式扩展推荐、详情、聚合查询等模块
-

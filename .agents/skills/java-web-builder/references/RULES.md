@@ -1,14 +1,5 @@
 # Java Web 项目规范（Spring Boot）
 
-## 构建命令
-
-- 编译：`mvn clean compile`
-- 测试：`mvn test`
-- 单测类：`mvn test -Dtest=SearchApplicationTest`
-- 单测方法：`mvn test -Dtest=SearchApplicationTest#testSearch1`
-- 打包：`mvn clean package`
-- 启动：`mvn spring-boot:run`
-
 ## 目录结构
 
 ```text
@@ -25,12 +16,11 @@ demo-spring/
 ├─ src/test/java/
 ├─ docs/
 ├─ README.md
-├─ AGENTS.md
 ├─ RECORDS.md
 └─ pom.xml
 ```
 
-## 分层职责
+## 目录职责
 
 - `controller`：仅接收入参、校验、调用 `service`、封装 `ApiResponse<T>`。
 - `service`：业务编排与回退策略（如 Redis 未命中回退 MySQL）。
@@ -48,7 +38,7 @@ demo-spring/
 
 ## 代码规范
 
-- Java 21；DTO/VO/Entity 优先使用 `record` 与不可变建模。
+- DTO/VO/Entity 优先使用 `record` 与不可变建模。
 - Controller Body 参数必须使用 DTO + `@Valid`，避免 `Map`/`Object` 作为对外入参出参。
 - 查询可空返回优先 `Optional<T>`；可空参数显式 `@Nullable`。
 - 依赖注入优先构造器注入。
@@ -56,7 +46,7 @@ demo-spring/
 
 ## 异常与响应
 
-- 业务错误抛 `BusinessException`（`NestedRuntimeException` 体系）。
+- 业务错误抛 `BusinessException`。
 - `GlobalExceptionHandler` 统一处理业务异常与非业务异常。
 - 所有接口统一返回 `ApiResponse<T>`，禁止用 `null` 表示失败。
 
@@ -78,4 +68,4 @@ demo-spring/
 - 功能迭代先更新 `docs/*-requirements.md`，再更新 `docs/*-design.md`。
 - 实现完成后同步更新 `README.md` 与 `RECORDS.md`。
 - `RECORDS.md` 仅允许追加，不覆盖历史。
-- 文档、代码、测试必须一致；当前示例以 `docs/search-requirements.md` 与 `docs/search-design.md` 为准。
+- 文档、代码、测试必须一致。
