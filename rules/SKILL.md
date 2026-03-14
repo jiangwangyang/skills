@@ -9,7 +9,8 @@ description: 默认规则 必须加载
 - 语言: 简体中文 禁止出现乱码
 - python:
     - 禁止使用 `python`
-    - 使用 `uv run your_script.py`
+    - 必须使用 `uv run your_script.py`
 - pip:
     - 禁止使用 `pip`
-    - 使用 `uv pip install ...`
+    - 必须使用 `uv pip ...`
+    - 使用镜像 `-i http://mirrors.aliyun.com/pypi/simple/`
