@@ -1,9 +1,6 @@
-target/
-build/
-log/
-.mvn/
 .idea/
 .vscode/
-*.iws
-*.iml
-*.ipr
+docx/
+pdf/
+pptx/
+xlsx/
