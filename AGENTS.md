@@ -1,8 +1,3 @@
----
-name: rules
-description: 默认规则 必须加载
----
-
 # 默认规则 必须遵守
 
 - 文件编码: UTF-8 without BOM
