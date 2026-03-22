@@ -101,6 +101,8 @@ if __name__ == "__main__":
         ("anthropics", "skills", "main", "skills/pdf", "pdf"),
         ("anthropics", "skills", "main", "skills/pptx", "pptx"),
         ("anthropics", "skills", "main", "skills/xlsx", "xlsx"),
+        ("anthropics", "skills", "main", "skills/frontend-design", "frontend-design"),
+        ("anthropics", "skills", "main", "skills/theme-factory", "theme-factory"),
     ]
 
     for idx, task in enumerate(download_tasks, 1):
